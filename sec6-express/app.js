@@ -29,6 +29,15 @@ app.get('/category/:name', (req, res) => {
   res.send(`hello ${req.params.name}`);
 });
 
+app.use((req, res, next) => {
+  res.send('404');
+});
+
+// Error middleware: 반드시 매개변수 4개를 넣어야 된다.
+app.use((err, req, res, next) => {
+  console.log(err);
+});
+
 app.listen(app.get('port'), () => {
   console.log('execute express server');
 });
